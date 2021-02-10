@@ -14,8 +14,8 @@ jobs:
       with:
         fetch-depth: 2
       
-    - name: Install Composer Dependencies
-      run: composer install --prefer-dist --no-progress
+  #  - name: Install Composer Dependencies
+  #    run: composer install --prefer-dist --no-progress
 
     - name: Install NPM packages
       run: npm install
