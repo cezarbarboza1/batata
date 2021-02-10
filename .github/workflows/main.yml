@@ -6,6 +6,21 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
+    name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2.3.2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.0.0
+      with:
+        server: 108.167.188.70
+        username: batat328
+        password: ma6nUpR012
     branches: [ master ]
   pull_request:
     branches: [ master ]
@@ -36,40 +51,3 @@ jobs:
           echo test, and deploy your project.
 
 
-name: FTP Deployment
-  # You may pin to the exact commit or the version.
-  # uses: airvzxf/ftp-deployment-action@9efe025c218094bd451a0cb684d7cb471f4d9d4f
-  uses: airvzxf/ftp-deployment-action@latest
-  with:
-    # FTP Server.
-    server: 108.167.188.70
-    # FTP User.
-    user: batat328
-    # FTP Password.
-    password: ma6nUpR012
-    # Local directory.
-    local_dir: # optional, default is ./
-    # Remote directory.
-    remote_dir: /ftpdeploy # optional, default is ./
-    # Delete all the files inside of the remote directory.
-    delete: # optional, default is false
-    # Times that the lftp will be executed if an error occurred.
-    max_retries: # optional, default is 10
-    # Do not create symbolic links.
-    no_symlinks: # optional, default is true
-    # FTP - Allow SSL encryption.
-    ftp_ssl_allow: # optional, default is false
-    # FTP - FEAT: Determining what extended features the FTP server supports.
-    ftp_use_feat: # optional, default is false
-    # FTP - Delay in seconds between NOOP commands when downloading tail of a file.
-    ftp_nop_interval: # optional, default is 2
-    # NET - Maximum number of operation without success. 0 unlimited. 1 no retries.
-    net_max_retries: # optional, default is 1
-    # NET - Ignore hard errors. When reply 5xx errors or there is too many users.
-    net_persist_retries: # optional, default is 5
-    # NET - Sets the network protocol timeout.
-    net_timeout: # optional, default is 15s
-    # DNS - 0 no limit trying to lookup an address otherwise try only this number of times.
-    dns_max_retries: # optional, default is 8
-    # DNS - Time for DNS queries. Set to "never" to disable.
-    dns_fatal_timeout: # optional, default is 10s
