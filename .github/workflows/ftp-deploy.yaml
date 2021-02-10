@@ -1,0 +1,20 @@
+on:
+  push:
+    paths:
+      - 'dist/*'
+name: FTP Deploy
+jobs:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2.1.0
+      with:
+        fetch-depth: 2
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@master
+      with:
+        ftp-server: 108.167.188.70
+        ftp-username: batat328
+        ftp-password: ma6nUpR012
+        server-dir: /ftpdeplou 
