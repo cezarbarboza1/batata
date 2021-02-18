@@ -14,4 +14,4 @@ jobs:
         server: 108.167.188.70
         username: batat328
         password: ${{ secrets.ftp_pass }}
-        local-dir: ./qa/
+        server-dir: ./qa/
