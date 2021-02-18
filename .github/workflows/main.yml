@@ -1,6 +1,6 @@
 on:
   push:
-    branches: [ master ]
+    branches: [ qa ]
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
@@ -16,4 +16,4 @@ jobs:
         server: 108.167.188.70
         username: batat328
         password: ${{ secrets.ftp_pass }}
-        server-dir: ./master/
+        server-dir: ./qa/
